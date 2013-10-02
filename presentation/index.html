@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Managing Drupal Configuration Like a Boss</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h1>Managing Drupal Configuration Like a Boss</h1>
+
+<h2>Thomas Lattimore &amp; Mark Shropshire</h2>
+</div>
+      <div class='step'  data-z="100" data-scale="2">
+    
+<h1>So what do we mean by configuration?</h1>
+</div>
+      <div class='step'  data-z="100">
+    
+<h2>Storytime…</h2>
+
+<ul>
+<li>You build an awesome site for <em>UnicornEngine.com</em>. This includes  some beautifully architected Content Types, polished Views, image style presets, and a lot more that is all glued together by your site building magic.</li>
+<li>The site launches as a huge success and all stakeholders are amazed by your mad skills.</li>
+</ul>
+</div>
+      <div class='step'  data-z="100" data-scale="2">
+    
+<h2>But, then they want changes made (of course)</h2>
+
+<p>And these changes have to be duplicated across the <strong>test</strong>, <strong>staging</strong>, <strong>demo</strong>, and <strong>live</strong> site for UnicornEngine.</p>
+</div>
+      <div class='step' >
+    
+<h2>So this means I have to point &amp; click across all these sites to make the changes?</h2>
+
+<p><img src="../img/picard-facepalm.gif" alt="Picard facepalm"></p>
+</div>
+      <div class='step' >
+    
+<h2>Wrong! <a href="https://drupal.org/project/features">Features</a> module to the rescue.</h2>
+</div>
+      <div class='step' >
+    
+<h2>Features module allows you to export your site configuration into code that can be deployed to different environments.</h2>
+
+<p><img src="../img/picard-dancing.gif" alt="Picard dance"></p>
+</div>
+      <div class='step' >
+    
+<p>An analogy...
+<img src="../img/blueprint_lego_bricks.png" alt="lego - from courtesy of drububu.com"></p>
+
+<p>If your Views, content types, taxonomy, and other configuration are &quot;Lego&quot;. Features is like storing a blueprint for that configuration <em>in code</em>. </p>
+</div>
+      <div class='step' >
+    
+<h2>Features history lesson:</h2>
+
+<ul>
+<li>Module name derived from its 1st intent: export &quot;features&quot; for a site. ex: <em>Blog</em>, <em>Photo gallery</em>, <em>Store</em>, etc.</li>
+<li>Geared towards distributions originally. </li>
+<li>As a side affect it could be used to manage general site configuration.</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Features can export:</h2>
+
+<ul>
+<li>Content types &amp; Fields</li>
+<li>Permissions &amp; Roles</li>
+<li>Menus</li>
+<li>{variable} table (with <a href="https://drupal.org/project/strongarm">strongarm</a> module)
+
+<ul>
+<li>This includes site name, slogan, pathauto settings, default theme, and a <em>lot</em> more.</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Have a need to export something not listed here? There&#39;s an API to define your own exportable types.</h2>
+</div>
+      <div class='step' >
+    
+<h2>Need more power? We&#39;ve got modules</h2>
+
+<ul>
+<li><a href="https://drupal.org/project/features_override">Features override</a>
+
+<ul>
+<li>If you need to override <em>existing</em> features.</li>
+</ul></li>
+<li><a href="https://drupal.org/project/features_orphans">Features orphans</a>
+
+<ul>
+<li>Provides a listing of all configuration that <em>can</em> and <em>hasn&#39;t</em> been exported.</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Drush integration? Yep, got you covered</h2>
+
+<ul>
+<li><code class='inline prettyprint'>drush fu {name_of_feature}</code>
+
+<ul>
+<li>update&#39;s features with latest configuration in the database</li>
+</ul></li>
+<li><code class='inline prettyprint'>drush fr {name_of_feature}</code> 
+
+<ul>
+<li>reverts any configuration in the database that doesn&#39;t match what&#39;s in a Feature</li>
+</ul></li>
+<li>See even more examples like creating or editing a Feature from drush in a <a href="http://highrockmedia.com/blog/features-drush-drupal-goodness">High Rock Media blog</a>.</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Enough talking - please show me stuff</h2>
+</div>
+      <div class='step' >
+    
+<h2>Moving forward...</h2>
+
+<ul>
+<li>Drupal 8 (when it&#39;s released) will ship with a configuration management system, built in!</li>
+<li>Features will go back to it&#39;s &quot;original&quot; purpose - packaging up &quot;features&quot;. Rather than being used also as a universal means of configuration storage</li>
+<li>There is no {variable} table. All configuration is stored in .yml configuration files.</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Can I see?</h2>
+</div>
+      <div class='step' >
+    
+<h2>And now, here&#39;s shrop!</h2>
+
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
